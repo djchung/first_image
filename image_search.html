@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+  $(document).ready(function(){
+    $('#input').submit(function(){
+      $.post("images.php", $('#input').serialize(), function(data){
+        $("#url").html("<a href='" + data + "'target='_blank'>" + data + "</a>" + "<p><img src='"+ data + "'/></p>");
+      }, "json");
+      return false;
+    });
+  });
+  </script>
+<form method="post" action="images.php" id="input">
+<input type="text" name="query" />
+  <input type="submit" value="Search" />
+</form>
+<div id="url"></div>
